@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Selamat Idul Fitri</title>
+  <style>
+    body {
+      margin: 0;
+      padding: 0;
+      background-color: #f7f7f7;
+      font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    }
+
+    .container {
+      max-width: 800px;
+      margin: 0 auto;
+      padding: 20px;
+    }
+
+    h1 {
+      text-align: center;
+      font-size: 36px;
+      font-weight: 700;
+      margin-bottom: 20px;
+    }
+
+    .input-name {
+      display: block;
+      margin-bottom: 20px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .share-button {
+      display: block;
+      margin: 0 auto;
+      padding: 10px 20px;
+      font-size: 16px;
+      border: none;
+      border-radius: 8px;
+      background-color: #006aff;
+      color: #fff;
+      cursor: pointer;
+      transition: all 0.3s ease-in-out;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    .share-button:hover {
+      background-color: #0052cc;
+    }
+
+    .share-url {
+      display: none;
+      margin-top: 20px;
+      padding: 10px;
+      font-size: 16px;
+      border-radius: 8px;
+      border: none;
+      width: 100%;
+      box-sizing: border-box;
+      background-color: #fff;
+      box-shadow: 0 0 5px rgba(0, 0, 0, 0.1);
+    }
+
+    @media only screen and (max-width: 600px) {
+      .container {
+        padding: 10px;
+      }
+
+      h1 {
+        font-size: 28px;
+      }
+
+      .input-name {
+        font-size: 14px;
+      }
+
+      .share-button {
+        font-size: 14px;
+        padding: 8px 16px;
+      }
+
+      .share-url {
+        font-size: 14px;
+        padding: 8px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+  <div class="container">
+    <h1>Selamat Idul Fitri!</h1>
+    <p>Mohon maaf lahir dan batin.</p>
+    <input type="text" id="input-name" class="input-name" placeholder="Masukkan nama Anda...">
+    <button id="share-button" class="share-button">Bagikan</button>
+    <input type="text" id="share-url" class="share-url" readonly>
+  </div>
+
+  <script>
+    const inputName = document.getElementById("input-name");
+    const shareButton = document.getElementById("share-button");
+    const shareUrl = document.getElementById("share-url");
+    shareButton.addEventListener("click", function () {
+      if (inputName.value.trim() === "") {
+        alert("Mohon masukkan nama Anda.");
+        inputName.focus();
+      } else {
+        const url = window.location.href + "?name=" + inputName.value.trim();
+        shareUrl.value = url;
+        shareUrl.style.display = "block";
+        shareUrl.select();
+        document.execCommand("copy");
+        alert("URL berhasil disalin ke clipboard. Silakan bagikan ke teman-teman Anda.");
+      }
+    });
+  </script>
+</body>
+
+</html>
